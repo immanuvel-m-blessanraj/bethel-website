@@ -1,8 +1,7 @@
-import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import PerfectScrollbar from 'react-perfect-scrollbar';
+// import Grid from '@material-ui/core/Grid';
+// import PerfectScrollbar from 'react-perfect-scrollbar';
+import { Box } from '@mui/system';
 
 const itemData = [
   'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80',
@@ -16,13 +15,13 @@ const itemData = [
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   paper: {
     padding: theme.spacing(2),
     textAlign: 'center',
-    color: theme.palette.text.secondary,
-  },
+    color: theme.palette.text.secondary
+  }
 }));
 
 export default function FullWidthGrid() {
@@ -30,21 +29,85 @@ export default function FullWidthGrid() {
 
   return (
     <div className={classes.root}>
-      <PerfectScrollbar options={{ suppressScrollX: true, suppressScrollY: false }}>
-        <Grid container spacing={3} style={{ minWidth: '100%' }}>
+      {/* <ScrollView></ScrollView> */}
+      <Box
+        display="-webkit-box"
+        overflow="auto"
+        sx={{
+          overflowX: 'scroll',
+          width: '100%'
+        }}
+      >
+        {itemData.map((map) => {
+          return (
+            <Box
+              component="section"
+              key={map}
+              className={{ map }}
+              sx={{
+                width: 500,
+                height: 500,
+                // bgcolor: 'red',
+                marginRight: 5,
+     
+                backgroundImage:
+                  "url('https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aHVtYW58ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80')",
+                // display: 'inline-block'
+                backgroundRepeat:'no-repeat',
+                backgroundPosition:"center",
+                backgroundSize:"cover",
+              }}
+            >
+              {/* <img></img> */}
+            </Box>
+          );
+        })}
+      </Box>
+      {/* <PerfectScrollbar options={{ suppressScrollX: true, suppressScrollY: false }}>
+        <Grid>
           {itemData.map((value) => (
             <Grid key={value} item>
-              <Paper className={classes.paper}>
-                <img
+              <Box display="flex">
+                <Box
+                  component="section"
+                  sx={{
+                    width: 100,
+                    height: 300,
+                    bgcolor: 'red',
+                    paddingRight: 20,
+                    paddingBottom: 20
+                  }}
+                ></Box>
+                <Box
+                  component="section"
+                  sx={{
+                    width: 100,
+                    height: 300,
+                    bgcolor: 'red',
+                    paddingRight: 20,
+                    paddingBottom: 20
+                  }}
+                ></Box>
+                <Box
+                  component="section"
+                  sx={{
+                    width: 100,
+                    height: 300,
+                    bgcolor: 'red',
+                    paddingRight: 20,
+                    paddingBottom: 20
+                  }}
+                ></Box>
+              </Box>
+              {/* <img
                   src={value}
                   alt={value}
                   style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
-                />
-              </Paper>
-            </Grid>
+                /> */}
+      {/* </Grid>
           ))}
         </Grid>
-      </PerfectScrollbar>
+      </PerfectScrollbar> */}
     </div>
   );
 }

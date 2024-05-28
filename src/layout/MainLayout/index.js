@@ -1,18 +1,19 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
+import { Typography } from '@mui/material';
 
 // material-ui
-import { styled, useTheme } from '@mui/material/styles';
 import { AppBar, Box, CssBaseline, Toolbar, useMediaQuery } from '@mui/material';
+import { styled, useTheme } from '@mui/material/styles';
 
 // project imports
+import navigation from 'menu-items';
+import { SET_MENU } from 'store/actions';
+import { drawerWidth } from 'store/constant';
 import Breadcrumbs from 'ui-component/extended/Breadcrumbs';
+import Customization from '../Customization';
 import Header from './Header';
 import Sidebar from './Sidebar';
-import Customization from '../Customization';
-import navigation from 'menu-items';
-import { drawerWidth } from 'store/constant';
-import { SET_MENU } from 'store/actions';
 
 // assets
 import { IconChevronRight } from '@tabler/icons-react';
@@ -64,34 +65,58 @@ const MainLayout = () => {
   };
 
   return (
-    <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
-      {/* header */}
-      <AppBar
-        enableColorOnDark
-        position="fixed"
-        color="inherit"
-        elevation={0}
+    <Box>
+      <Box sx={{ display: 'flex' }}>
+        <CssBaseline />
+        {/* header */}
+        <AppBar
+          enableColorOnDark
+          position="fixed"
+          color="inherit"
+          elevation={0}
+          sx={{
+            bgcolor: theme.palette.background.default,
+            transition: leftDrawerOpened ? theme.transitions.create('width') : 'none'
+          }}
+        >
+          <Toolbar>
+            <Header handleLeftDrawerToggle={handleLeftDrawerToggle} />
+          </Toolbar>
+        </AppBar>
+
+        {/* drawer */}
+        <Sidebar drawerOpen={!matchDownMd ? leftDrawerOpened : !leftDrawerOpened} drawerToggle={handleLeftDrawerToggle} />
+
+        {/* main content */}
+        <Main theme={theme} open={leftDrawerOpened}>
+          {/* breadcrumb */}
+          <Breadcrumbs separator={IconChevronRight} navigation={navigation} icon title rightAlign />
+          <Outlet />
+        </Main>
+        <Customization />
+      </Box>
+      <Box
         sx={{
-          bgcolor: theme.palette.background.default,
-          transition: leftDrawerOpened ? theme.transitions.create('width') : 'none'
+          width: '100%',
+          height: 100,
+          bgcolor: theme.palette.secondary.light,
+          alignItems: 'center',
+          justifyContent: 'center',
+          display: 'flex'
         }}
       >
-        <Toolbar>
-          <Header handleLeftDrawerToggle={handleLeftDrawerToggle} />
-        </Toolbar>
-      </AppBar>
-
-      {/* drawer */}
-      <Sidebar drawerOpen={!matchDownMd ? leftDrawerOpened : !leftDrawerOpened} drawerToggle={handleLeftDrawerToggle} />
-
-      {/* main content */}
-      <Main theme={theme} open={leftDrawerOpened}>
-        {/* breadcrumb */}
-        <Breadcrumbs separator={IconChevronRight} navigation={navigation} icon title rightAlign />
-        <Outlet />
-      </Main>
-      <Customization />
+        <Box sx={{ justifyContent: 'center', alignItems: 'center' }}>
+          <Typography variant="h4" align="center">
+            Bethel Church of God In India,
+          </Typography>
+          <Typography sx={{ paddingTop: '5px' }} align="center" variant="h4">
+            3/46, Aayathurai, Perur (post),
+          </Typography>
+          <Typography sx={{ paddingTop: '5px' }} align="center" variant="h4">
+            Srivaikundam (Taulk), Thoothukudi - 628620,
+          </Typography>
+        </Box>
+      </Box>
     </Box>
   );
 };

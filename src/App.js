@@ -16,8 +16,15 @@ import NavigationScroll from 'layout/NavigationScroll';
 
 const App = () => {
   const customization = useSelector((state) => state.customization);
-
+  // const brands =[ { id: 22, name: 'apple' }];
   return (
+    // <div className="ChooseBrand">
+    //   {brands.map((item,index) => (
+    //     <div className="brand" key={index}>
+    //       <h1>{item.name}</h1>
+    //     </div>
+    //   ))}
+    // </div>
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={themes(customization)}>
         <CssBaseline />
