@@ -1,10 +1,11 @@
 // assets
-import { IconDashboard } from '@tabler/icons-react';
+import {   PhotoOutlined } from '@material-ui/icons';
+import {   IconHeartHandshake, IconHome, IconMail, IconUsersGroup } from '@tabler/icons-react';
 // assets
 import { IconTypography, IconPalette, IconShadow, IconWindmill } from '@tabler/icons-react';
 
 // constant
-const icons = { IconDashboard, IconTypography, IconPalette, IconShadow, IconWindmill };
+const icons = { IconHome, IconTypography, IconPalette, IconShadow, IconWindmill, IconUsersGroup,IconHeartHandshake,PhotoOutlined};
 
 // ==============================|| DASHBOARD MENU ITEMS ||============================== //
 
@@ -18,7 +19,7 @@ const dashboard = {
       title: 'Home',
       type: 'item',
       url: '/home',
-      icon: icons.IconDashboard,
+      icon: icons.IconHome,
       breadcrumbs: false
     },
     {
@@ -26,7 +27,7 @@ const dashboard = {
       title: 'Who We Are',
       type: 'item',
       url: '/who-we-are',
-      icon: icons.IconPalette,
+      icon: icons.IconUsersGroup,
       breadcrumbs: false
     },
     {
@@ -34,7 +35,7 @@ const dashboard = {
       title: 'What We Believe',
       type: 'item',
       url: '/what-we-believe',
-      icon: icons.IconShadow,
+      icon: IconHeartHandshake,
       breadcrumbs: false
     },
     {
@@ -42,7 +43,7 @@ const dashboard = {
       title: 'Contact Us',
       type: 'item',
       url: '/contact-us',
-      icon: icons.IconShadow,
+      icon: IconMail,
       breadcrumbs: false
     },
     {
@@ -50,7 +51,7 @@ const dashboard = {
       title: 'Gallery',
       type: 'item',
       url: '/gallery',
-      icon: icons.IconShadow,
+      icon: icons.PhotoOutlined,
       breadcrumbs: false
     }
   ]

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
-import { Avatar, Box, ButtonBase, Typography } from '@mui/material';
+import { Avatar, Box, ButtonBase, Typography, useMediaQuery } from '@mui/material';
 
 // project imports
 import LogoSection from '../LogoSection';
@@ -10,13 +10,13 @@ import LogoSection from '../LogoSection';
 // import ProfileSection from './ProfileSection';
 
 // assets
-import { IconBrandWhatsapp, IconMail, IconMenu2 } from '@tabler/icons-react';
+import { IconMail, IconMenu2, IconPhoneCall } from '@tabler/icons-react';
 
 // ==============================|| MAIN NAVBAR / HEADER ||============================== //
 
 const Header = ({ handleLeftDrawerToggle }) => {
   const theme = useTheme();
-
+  const isMobileView = useMediaQuery(theme.breakpoints.down('md'));
   return (
     <>
       {/* logo & toggler button */}
@@ -56,47 +56,54 @@ const Header = ({ handleLeftDrawerToggle }) => {
 
       {/* header search */}
       {/* <SearchSection /> */}
-      <Box sx={{ flexGrow: 1 }} />
+      <Typography sx={{ pl: '40px' }} variant="h2">
+        BETHEL CHURCH OF GOD
+      </Typography>
       <Box sx={{ flexGrow: 1 }} />
 
       {/* notification & profile */}
-      <Box sx={{ px: 2, pt: 0.25, alignItems: 'center' }} display="flex" justifyContent="space-between">
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'center', // Center horizontally
-            alignItems: 'center', // Center vertically
-            borderRadius: '2px',
-            padding: '2px',
-            // color: theme.palette.secondary.light,
-            color: theme.palette.secondary.dark
-          }}
-        >
-          <IconBrandWhatsapp stroke={1} size="2.4rem" />
+      {isMobileView ? null : (
+        <Box sx={{ pt: 0.25, alignItems: 'center', display: 'flex' }} justifyContent="space-between">
+          <Box
+            sx={{
+              // display: 'flex',
+              justifyContent: 'center', // Center horizontally
+              alignItems: 'center', // Center vertically
+              borderRadius: '2px',
+              padding: '4px',
+              // color: theme.palette.secondary.light,
+              color: theme.palette.secondary.dark
+            }}
+          >
+            <IconPhoneCall stroke={1} size="1.7rem" />
+          </Box>
+
+          <Typography sx={{ pl: '2px', pr: '10px' }} variant="h5" color="secondary">
+            9361638515
+          </Typography>
         </Box>
+      )}
+      {isMobileView ? null : (
+        <Box sx={{ px: 2, pt: 0.25, alignItems: 'center', display: 'flex' }} justifyContent="space-between">
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'center', // Center horizontally
+              alignItems: 'center', // Center vertically
+              borderRadius: '2px',
+              padding: '4px',
+              // color: theme.palette.secondary.light,
+              color: theme.palette.secondary.dark
+            }}
+          >
+            <IconMail stroke={1} size="1.9rem" />
+          </Box>
 
-        <Typography sx={{pl:"2px", pr: '10px' }} variant="h4" color="secondary">
-          9361638515
-        </Typography>
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'center', // Center horizontally
-            alignItems: 'center', // Center vertically
-            borderRadius: '2px',
-            padding: '2px',
-            // color: theme.palette.secondary.light,
-            color: theme.palette.secondary.dark
-          }}
-        >
-          <IconMail stroke={1} size="2.4rem" />
+          <Typography sx={{ pl: '2px', pr: '10px' }} variant="h5" color={theme.palette.secondary.dark}>
+            immanuvel123@gmail.com
+          </Typography>
         </Box>
-
-        <Typography sx={{pl:"2px", pr: '10px' }} variant="h4" color={theme.palette.secondary.dark}>
-          immanuvel123@gmail.com
-        </Typography>
-      </Box>
-
+      )}
       {/* <NotificationSection /> */}
       {/* <ProfileSection /> */}
     </>

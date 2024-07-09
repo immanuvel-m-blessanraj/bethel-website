@@ -98,23 +98,25 @@ const MainLayout = () => {
       <Box
         sx={{
           width: '100%',
-          height: 100,
+          height: 70,
           bgcolor: theme.palette.secondary.light,
           alignItems: 'center',
           justifyContent: 'center',
-          display: 'flex'
+          display: 'flex',
+          position: 'relative',
+          zIndex: theme.zIndex.drawer + 1,
         }}
       >
-        <Box sx={{ justifyContent: 'center', alignItems: 'center' }}>
+        <Box sx={{ justifyContent: 'center', alignItems: 'center' }} zIndex="6000">
           <Typography variant="h4" align="center">
             Bethel Church of God In India,
           </Typography>
           <Typography sx={{ paddingTop: '5px' }} align="center" variant="h4">
-            3/46, Aayathurai, Perur (post),
+            3/46, Aayathurai, Thoothukudi - 628620.
           </Typography>
-          <Typography sx={{ paddingTop: '5px' }} align="center" variant="h4">
+          {/* <Typography sx={{ paddingTop: '5px' }} align="center" variant="h4">
             Srivaikundam (Taulk), Thoothukudi - 628620,
-          </Typography>
+          </Typography> */}
         </Box>
       </Box>
     </Box>

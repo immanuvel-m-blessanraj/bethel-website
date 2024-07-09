@@ -12,6 +12,7 @@ $primary800: #1565c0;
 $secondaryLight: #ede7f6;
 $secondaryMain: #673ab7;
 $secondaryDark: #5e35b1;
+$secondary100: rgb(213 118 221 / 22%);
 $secondary200: #b39ddb;
 $secondary800: #4527a0;
 
@@ -90,6 +91,7 @@ $darkTextSecondary: #8492c4;
 
   // secondary
   secondaryLight: $secondaryLight;
+  secondary100: $secondary100;
   secondary200: $secondary200;
   secondaryMain: $secondaryMain;
   secondaryDark: $secondaryDark;
